@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=5.0,minimum-scale=1.0, maximum-scale=10.0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- <audio controls>
+        <source src="https://example.com/audio.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+      
+      <video width="320" height="240" controls>
+        <source src="https://example.com/video.mp4" type="video/mp4">
+        Your browser does not support the video element.
+      </video> -->
+
+    <!-- <canvas id="myCanvas" width="500" height="300"></canvas> -->
+    <script>
+      // const canvas = document.getElementById('myCanvas');
+      //  const context = canvas.getContext('2d');
+      //  // Draw a rectangle
+      // 	context.fillStyle = 'blue';
+      // 	context.fillRect(50, 50, 100, 80);
+
+      // 	// Draw a circle
+      // 	context.beginPath();
+      // 	context.arc(250, 150, 50, 0, 2 * Math.PI);
+      // 	context.fillStyle = 'green';
+      // 	context.fill();
+
+      if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            // Success callback
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            alert(`Your current position is: ${latitude}, ${longitude}`);
+          },
+          function (error) {
+            // Error callback
+            switch (error.code) {
+              case error.PERMISSION_DENIED:
+                alert("User denied the request for Geolocation.");
+                break;
+              case error.POSITION_UNAVAILABLE:
+                alert("Location information is unavailable.");
+                break;
+              case error.TIMEOUT:
+                alert("The request to get user location timed out.");
+                break;
+              case error.UNKNOWN_ERROR:
+                alert("An unknown error occurred.");
+                break;
+            }
+          }
+        );
+      } else {
+        alert("Geolocation is not supported by your browser");
+      }
+    </script>
+  </body>
+</html>

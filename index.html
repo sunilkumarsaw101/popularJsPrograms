@@ -1,0 +1,102 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>hello</h1>
+    <script>
+      //   function fetchData(url, callback){
+      //            fetch(url).then((data)=>data.json()).then((data)=>callback(null, data))
+      //   }
+
+      //   fetchData('https://jsonplaceholder.typicode.com/todos', (error, data)=>{
+      //     if(error){
+      //         console.log('error: ', error);
+      //     }else{
+      //         console.log('data: ', data);
+      //     }
+      //   });
+
+      //create promise.
+    //   function fetchData() {
+    //     // return new Promise((resolve, reject) => {
+    //     //   fetch("https://jsonplaceholder.typicode.com/todos")
+    //     //     .then((response) => response.json())
+    //     //     .then((data) => resolve(data)).catch((error)=>reject(error));
+    //     // });
+    //     return new Promise((resolve, reject)=>{
+    //         reject('failed');
+    //         resolve('success');
+    //     })
+    //   }
+
+    //   fetchData().then((data)=>console.log(data)).catch((error)=>console.log(error))
+    async function fetchData(){
+        let resp= await fetch('https://jsonplaceholder.typicode.com/todos');
+        // resp= await resp.json();
+        // return resp;
+        console.log(resp);
+    }
+    fetchData();
+    </script>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Chat</title>
+</head>
+<body>
+  <div id="chat">
+    <div id="messages"></div>
+    <input type="text" id="messageInput" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    const socket = new WebSocket('ws://localhost:3000');
+
+    socket.onopen = (event) => {
+      console.log('WebSocket connection opened:', event);
+    };
+
+    socket.onmessage = (event) => {
+      const message = event.data;
+      displayMessage(message);
+    };
+
+    socket.onclose = (event) => {
+      console.log('WebSocket connection closed:', event);
+    };
+
+    socket.onerror = (event) => {
+      console.error('WebSocket error:', event);
+    };
+
+    function sendMessage() {
+      const messageInput = document.getElementById('messageInput');
+      const message = messageInput.value.trim();
+
+      if (message) {
+        socket.send(message);
+        messageInput.value = '';
+      }
+    }
+
+    function displayMessage(message) {
+      console.log(message);
+      const messagesDiv = document.getElementById('messages');
+      const newMessage = document.createElement('p');
+      newMessage.textContent = message;
+      console.log('this is new message: ',newMessage);
+      messagesDiv.appendChild(newMessage);
+    }
+  </script>
+</body>
+</html>

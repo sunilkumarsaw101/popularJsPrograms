@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebSocket Example</title>
+</head>
+<body>
+
+<script>
+  const socket = new WebSocket('ws://example.com/socket');
+
+  socket.onopen = (event) => {
+    console.log('WebSocket connection opened:', event);
+  };
+
+  socket.onmessage = (event) => {
+    const message = event.data;
+    console.log('Received message:', message);
+  };
+
+  socket.onclose = (event) => {
+    console.log('WebSocket connection closed:', event);
+  };
+
+  socket.onerror = (event) => {
+    console.error('WebSocket error:', event);
+  };
+
+  // Sending a message after 3 seconds for demonstration purposes
+  setTimeout(() => {
+    const messageToSend = 'Hello, Server!';
+    socket.send(messageToSend);
+  }, 3000);
+</script>
+
+</body>
+</html>

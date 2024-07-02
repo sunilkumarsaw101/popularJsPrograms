@@ -1,0 +1,129 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Propagation Example</title>
+</head>
+<body>
+
+  <div id="parent">
+    <button id="child">Click me</button>
+  </div>
+
+  <script>
+    // Event capturing phase
+    document.getElementById('parent').addEventListener('click', function() {
+      console.log('Parent div capturing');
+    //   event.stopPropagation();
+
+    }, true); // true enables event capturing
+
+    // Event bubbling phase
+    document.getElementById('parent').addEventListener('click', function() {
+      console.log('Parent div bubbling');
+    });
+
+    document.getElementById('child').addEventListener('click', function() {
+      console.log('Button clicked');
+      // Stop the event propagation to prevent further bubbling or capturing
+    //   event.stopPropagation();
+    });
+  </script>
+
+</body>
+</html> -->
+
+<!-- debouncing -->
+
+<!-- <input type="text" id="searchInput" placeholder="Type here">
+
+<script>
+function performSearch(query) {
+    // Simulate a search operation with the query
+    console.log("Searching for:", query);
+}
+
+const debouncedSearch = debounce(performSearch, 1000);
+
+document.getElementById("searchInput").addEventListener("input", function(event) {
+    const query = event.target.value;
+    console.log('this is query: ', query);
+    debouncedSearch(query);
+});
+
+function debounce(func, delay) {
+    let timeoutId;
+    return function() {
+        const context = this;
+        console.log('this is context:', context);
+        const args = arguments;
+        console.log('this is args: ', args);
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(function() {
+            func.apply(context, args);
+        }, delay);
+    };
+}
+</script> -->
+
+<!-- <div
+  id="scrollContainer"
+  style="height: 200px; border: solid 1px red; overflow-y: scroll"
+>
+  
+  <h1>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deleniti
+    asperiores a facilis est minus consequatur incidunt, consectetur unde
+    aperiam assumenda voluptatem laudantium ullam mollitia perferendis accusamus
+    dicta vel ipsum earum. Lorem ipsum dolor sit, amet consectetur adipisicing
+    elit. Nulla suscipit doloribus, iste omnis consequuntur aperiam vero.
+    Obcaecati, neque. Repellat optio voluptate placeat blanditiis cumque nemo
+    magnam dolor quidem, officia praesentium. Lorem ipsum dolor sit, amet
+    consectetur adipisicing elit. Nihil molestiae culpa vel? Saepe sint officiis
+    amet enim magni. Quibusdam expedita, qui quaerat maiores fugiat facere quae!
+    Officiis earum suscipit possimus. Lorem ipsum dolor sit, amet consectetur
+    adipisicing elit. Corrupti temporibus porro voluptatibus in similique at
+    aspernatur voluptatum accusamus voluptatem! Soluta, voluptates! Vero, itaque
+    obcaecati saepe explicabo maxime officia quaerat aspernatur.
+  </h1>
+</div>
+
+<script>
+  function handleScroll() {
+    // Simulate some operation when scrolling
+    console.log("Scrolled");
+  }
+
+  const throttledScroll = throttle(handleScroll, 2000);
+
+  document
+    .getElementById("scrollContainer")
+    .addEventListener("scroll", throttledScroll);
+
+  function throttle(func, delay) {
+    let throttled = false;
+    return function () {
+      const context = this;
+      const args = arguments;
+      if (!throttled) {
+        func.apply(context, args);
+        throttled = true;
+        setTimeout(function () {
+          throttled = false;
+        }, delay);
+      }
+    };
+  }
+</script> -->
+
+<!-- <button onclick="redirectToNewPage()" > redirectToNewPage</button>
+<script>
+ function redirectToNewPage(){
+
+    // window.location.href='http://example.com' // this will redirect new page, not change the tab.
+
+    window.open("https://www.example.com"); //open in new tab.
+  }
+</script> -->
+<div>hellooo</div>
